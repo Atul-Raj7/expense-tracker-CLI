@@ -1,1 +1,33 @@
-const arg = process.argv.slice(2).join(" ")
+import readFile from './functions/readFile.js';
+import writeFile from './functions/writeTask.js';
+import { Command } from 'commander';
+const expense = new Command();
+
+function getNextId(data) {
+    const ids = data.map(item => item.id)
+    let nextId = 1
+    for(const id of ids){
+        if(id !== nextId){
+            return nextId
+        }
+        nextId++
+    }
+    return nextId
+}
+
+expense
+    .command('add')
+    .option('-d,--description [description]','expense description')
+    .option('-a,--amount <amount_spent>','money spent')
+    .action((options) => {
+        const expenses = readFile()
+        const newExpense = {
+            id: getNextId(expenses),
+            description: options.description,
+            amount: options.amount
+        }
+        expenses.push(newExpense)
+        writeFile(expenses)
+        console.log(`Expense added successfully ID:${newExpense.id}`)
+    })
+expense.parse()
