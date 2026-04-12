@@ -5,7 +5,7 @@ const expense = new Command();
 
 function getNextId(data) {
     const ids = data.map(item => item.id)
-    let nextId = 1
+    let nextId = 0
     for(const id of ids){
         if(id !== nextId){
             return nextId
@@ -24,7 +24,7 @@ expense
         const newExpense = {
             id: getNextId(expenses),
             description: options.description,
-            amount: options.amount
+            amount: Number(options.amount)
         }
         expenses.push(newExpense)
         writeFile(expenses)
