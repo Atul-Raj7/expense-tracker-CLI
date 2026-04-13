@@ -33,4 +33,22 @@ expense
         writeFile(expenses)
         console.log(`Expense added successfully ID:${newExpense.id}`)
     })
+
+expense
+    .command('update')
+    .option('--id <id>', 'expense record id')
+    .option('-a,--amount <amount_spent>','money spent')
+    .option('-d,--description [description]','expense description')
+    .action((options) => {
+        const expenses = readFile()
+        const updateExpense = expenses.find(item => item.id === Number(options.id))
+        if(updateExpense){
+            updateExpense.description = options.description,
+            updateExpense.amount = Number(options.amount),
+            updateExpense.date = timeStamp
+        }
+        writeFile(expenses)
+        console.log(`Expense record ID:${options.id} updated \n\t ${JSON.stringify(updateExpense, null, 2)}`)
+    })
+
 expense.parse()
