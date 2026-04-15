@@ -1,5 +1,6 @@
 import add from './commands/add.js';
 import update from './commands/update.js';
+import deleteExpense from './commands/delete.js';
 
 
 import { Command } from 'commander';
@@ -20,6 +21,13 @@ expense
     .option('-d,--description [description]','expense description')
     .action((options) => {
         update(options)
+    })
+
+expense
+    .command('delete')
+    .option('--id <id>', 'expense record id')
+    .action((options) => {
+        deleteExpense(options)
     })
 
 expense.parse()
