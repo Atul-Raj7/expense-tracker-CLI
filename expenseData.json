@@ -7,14 +7,14 @@
   },
   {
     "id": 1,
-    "description": "lunch",
-    "amount": 20,
+    "description": "Hydrogen Bomb",
+    "amount": 1000,
     "date": "2026-04-16"
   },
   {
     "id": 2,
-    "description": "lunch",
-    "amount": 20,
+    "description": "Rocket",
+    "amount": 200,
     "date": "2026-04-16"
   },
   {
