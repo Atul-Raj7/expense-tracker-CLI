@@ -2,7 +2,7 @@ import readFile from '../utils/readFile.js';
 import writeFile from '../utils/writeTask.js';
 import idGen from './idGen.js';
 
-const timeStamp = new Date().toString().split("GMT")[0].trim()
+const timeStamp = new Date().toISOString().split('T')[0]
 
 export default function add (options) {
     const expenses = readFile()
